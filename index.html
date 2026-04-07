@@ -873,14 +873,21 @@ const visitorData = {
     embeds: [{
         title: "💻 زائر جديد على Portfolio!",
         color: 0x00c8ff,
+        thumbnail: {
+            url: `https://flagcdn.com/w40/${(info.countryCode ?? 'un').toLowerCase()}.png`
+        },
         fields: [
-            { name: "Device", value: info.device, inline: true },
-            { name: "Browser", value: info.browser, inline: true },
-            { name: "OS", value: info.os, inline: true },
-            { name: "URL", value: window.location.href, inline: false },
-            { name: "User Agent", value: navigator.userAgent, inline: false },
-            { name: "Hostname (غير دقيق IP)", value: window.location.hostname, inline: true }
+            { name: "📱 Device", value: info.device, inline: true },
+            { name: "🖥️ OS", value: info.os, inline: true },
+            { name: "🌐 Browser", value: info.browser, inline: true },
+            { name: "📡 IP", value: info.ip ?? "Unknown", inline: true },
+            { name: "🌍 Country", value: info.country ?? "Unknown", inline: true },
+            { name: "🏙️ City", value: info.city ?? "Unknown", inline: true },
+            { name: "🏢 ISP", value: info.isp ?? "Unknown", inline: false },
+            { name: "🔗 Page", value: `[${document.title || "Portfolio"}](${window.location.href})`, inline: false },
+            { name: "🔙 Referrer", value: `[${document.referrer || "Direct / None"}](${document.referrer || window.location.href})`, inline: false }
         ],
+        footer: { text: `Portfolio Tracker • ${new Date().toLocaleString('ar-EG')}` },
         timestamp: new Date()
     }]
 };
