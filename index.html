@@ -376,6 +376,7 @@ section { position: relative; z-index: 1; padding: 100px 5%; }
 }
 .btn-github:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--glow-s); }
 .btn-github svg { width: 16px; height: 16px; }
+.project-links { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /* ─── STRENGTHS ─── */
 #strengths { background: var(--bg); }
@@ -683,11 +684,14 @@ footer span { color: var(--accent); }
 
     <div class="project-card glass reveal">
       <div class="project-num">// PROJECT_01</div>
-      <h3 class="project-title">Multi-Vendor E-Commerce Platform</h3>
-      <p class="project-desc">A full-featured backend for a scalable e-commerce marketplace supporting multiple vendors, product catalogs, and order management — engineered for performance under load.</p>
+      <h3 class="project-title">Multi-Store E-Commerce Platform</h3>
+      <p class="project-desc">A comprehensive e-commerce platform supporting multiple stores/vendors with advanced features like secure payments, real-time order tracking, and robust user management — built for scalability and high performance.</p>
       <ul class="project-features">
+        <li>Multi-role system: Super Admin, Admin, User with granular permissions</li>
+        <li>Payment integration with Stripe for secure transactions</li>
+        <li>Order tracking with Google Maps for real-time delivery updates</li>
+        <li>Authentication powered by Laravel Fortify</li>
         <li>Full backend: vendors, products, orders, cart flows</li>
-        <li>Role &amp; permission system (RBAC)</li>
         <li>Optimized database queries with eager loading</li>
         <li>REST API implementation with versioning</li>
       </ul>
@@ -697,6 +701,9 @@ footer span { color: var(--accent); }
         <span class="badge">REST API</span>
         <span class="badge">Redis</span>
         <span class="badge">Sanctum</span>
+        <span class="badge">Stripe</span>
+        <span class="badge">Google Maps</span>
+        <span class="badge">Fortify</span>
       </div>
       <a href="https://github.com/minamaherwanis/-Multi-Vendor-Store" class="btn-github" target="_blank">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
@@ -706,6 +713,37 @@ footer span { color: var(--accent); }
 
     <div class="project-card glass reveal">
       <div class="project-num">// PROJECT_02</div>
+      <h3 class="project-title">Encrypted Chat App</h3>
+      <p class="project-desc">A fully functional Chat Application built using Laravel and modern real-time technologies, featuring real-time messaging with WebSockets, stories, data encryption, and smooth UX.</p>
+      <ul class="project-features">
+        <li>Real-Time Chat with WebSockets</li>
+        <li>Stories Feature (upload, view, track viewers)</li>
+        <li>Data Encryption (at rest / in transit)</li>
+        <li>OTP-based Authentication (in progress)</li>
+        <li>Lazy loading / pagination for messages</li>
+        <li>Deployed on Laravel Cloud</li>
+      </ul>
+      <div class="badges">
+        <span class="badge">Laravel</span>
+        <span class="badge">Livewire</span>
+        <span class="badge">Reverb</span>
+        <span class="badge">MySQL</span>
+        <span class="badge">Vite</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/minamaherwanis/ChatApp" class="btn-github" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          View on GitHub
+        </a>
+        <a href="https://chatapp-main-dhkti4.free.laravel.cloud/home" class="btn-github" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          View Live Demo
+        </a>
+      </div>
+    </div>
+
+    <div class="project-card glass reveal">
+      <div class="project-num">// PROJECT_03</div>
       <h3 class="project-title">Blog CMS System</h3>
       <p class="project-desc">A robust content management system with a clean API architecture — built with security-first principles, full CRUD operations, and a structured schema for maintainability.</p>
       <ul class="project-features">
@@ -768,6 +806,54 @@ footer span { color: var(--accent); }
       <p class="strength-desc">Robust auth systems: JWT, Sanctum, OAuth2, RBAC — protecting your users by default.</p>
     </div>
 
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">💬</span>
+      <div class="strength-title">Real-Time Systems</div>
+      <p class="strength-desc">Building real-time applications with WebSockets, Livewire, and Reverb for instant communication and updates.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">💳</span>
+      <div class="strength-title">Payment Integration</div>
+      <p class="strength-desc">Seamless payment processing with Stripe and other gateways, ensuring secure and reliable transactions.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">🗺️</span>
+      <div class="strength-title">Geospatial Features</div>
+      <p class="strength-desc">Integrating maps and location services with Google Maps API for tracking, delivery, and location-based features.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">🔐</span>
+      <div class="strength-title">Data Encryption</div>
+      <p class="strength-desc">Implementing encryption for data at rest and in transit, plus advanced security measures for user protection.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">🗄️</span>
+      <div class="strength-title">Database Architecture</div>
+      <p class="strength-desc">Designing efficient, normalized database schemas with MySQL, including indexing, query optimization, and relationships.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">🚀</span>
+      <div class="strength-title">Cloud Deployment</div>
+      <p class="strength-desc">Deploying applications on cloud platforms like Laravel Cloud, with experience in server management and scalability.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">🔧</span>
+      <div class="strength-title">API Development</div>
+      <p class="strength-desc">Building robust REST APIs with versioning, rate limiting, and comprehensive documentation for seamless integrations.</p>
+    </div>
+
+    <div class="strength-card glass reveal">
+      <span class="strength-icon">⚙️</span>
+      <div class="strength-title">Modern Tooling</div>
+      <p class="strength-desc">Proficient with Vite for frontend builds, Git for version control, and modern PHP/Laravel ecosystem tools.</p>
+    </div>
+
   </div>
 </section>
 
@@ -816,7 +902,7 @@ footer span { color: var(--accent); }
       </div>
     </div>
 
-    <div class="contact-form glass reveal" style="padding:2rem; border-radius:var(--r);">
+    <!-- <div class="contact-form glass reveal" style="padding:2rem; border-radius:var(--r);">
       <div class="form-group">
         <label>Name</label>
         <input type="text" placeholder="John Doe" id="form-name">
@@ -830,7 +916,7 @@ footer span { color: var(--accent); }
         <textarea placeholder="Tell me about your project..." id="form-message"></textarea>
       </div>
       <button class="btn-send" id="sendBtn" onclick="handleSend()">Send Message →</button>
-    </div>
+    </div> -->
   </div>
 </section>
 
@@ -1074,27 +1160,59 @@ const countObs = new IntersectionObserver(entries => {
 document.querySelector('.hero-stats') && countObs.observe(document.querySelector('.hero-stats'));
 
 /* ── FORM ── */
-function handleSend() {
+async function handleSend() {
   const btn = document.getElementById('sendBtn');
-  const name = document.getElementById('form-name').value;
-  const email = document.getElementById('form-email').value;
-  const msg = document.getElementById('form-message').value;
+  const name = document.getElementById('form-name').value.trim();
+  const email = document.getElementById('form-email').value.trim();
+  const msg = document.getElementById('form-message').value.trim();
+  
   if (!name || !email || !msg) {
     btn.textContent = 'Please fill all fields ✕';
     btn.style.background = '#e74c3c';
     setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; }, 2000);
     return;
   }
+
   btn.textContent = 'Sending...';
   btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Message Sent ✓';
-    btn.classList.add('sent');
-    document.getElementById('form-name').value = '';
-    document.getElementById('form-email').value = '';
-    document.getElementById('form-message').value = '';
-    setTimeout(() => { btn.textContent = 'Send Message →'; btn.classList.remove('sent'); btn.disabled = false; }, 3500);
-  }, 1400);
+
+  try {
+    // Send via FormSubmit.co
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', msg);
+    formData.append('_captcha', 'false');
+
+    const response = await fetch('https://formsubmit.co/ajax/minamaherwanis@gmail.com', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok || response.status === 200) {
+      btn.textContent = 'Message Sent ✓';
+      btn.classList.add('sent');
+      document.getElementById('form-name').value = '';
+      document.getElementById('form-email').value = '';
+      document.getElementById('form-message').value = '';
+      setTimeout(() => { 
+        btn.textContent = 'Send Message →'; 
+        btn.classList.remove('sent'); 
+        btn.disabled = false; 
+      }, 3500);
+    } else {
+      throw new Error('Send failed');
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+    btn.textContent = 'Error sending ✕';
+    btn.style.background = '#e74c3c';
+    setTimeout(() => { 
+      btn.textContent = 'Send Message →'; 
+      btn.style.background = ''; 
+      btn.disabled = false;
+    }, 2000);
+  }
 }
 </script>
 </body>
