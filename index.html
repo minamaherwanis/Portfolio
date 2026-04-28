@@ -634,17 +634,83 @@
   <script>
     const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1491155341331792032/odenDTC9sOz7A4GUXZ1CPcUIDZ3lPW-qwL9Cu7USzROh3R7HbtQGmj8EAqdAiCIAilRa";
     function getDeviceInfo() {
-      const ua = navigator.userAgent;
-      let device = /mobile/i.test(ua) ? "Mobile" : /tablet/i.test(ua) ? "Tablet" : "Desktop";
-      let browser = /firefox/i.test(ua) ? "Firefox" : /chrome/i.test(ua) ? "Chrome" : /safari/i.test(ua) ? "Safari" : "Unknown";
-      let os = /windows/i.test(ua) ? "Windows" : /macintosh/i.test(ua) ? "macOS" : /linux/i.test(ua) ? "Linux" : /android/i.test(ua) ? "Android" : /iphone|ipad|ipod/i.test(ua) ? "iOS" : "Unknown";
-      return { device, browser, os };
+      const ua = navigator.userAgent || "Unknown";
+      const platform = navigator.platform || "Unknown";
+      const vendor = navigator.vendor || "Unknown";
+      const language = navigator.language || "Unknown";
+      const screenSize = `${window.screen.width}x${window.screen.height}`;
+      const viewportSize = `${window.innerWidth}x${window.innerHeight}`;
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown";
+      const connectionType = navigator.connection?.effectiveType || navigator.connection?.type || "Unknown";
+      const cores = navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency}` : "Unknown";
+      const memory = navigator.deviceMemory ? `${navigator.deviceMemory} GB` : "Unknown";
+      const touch = ('ontouchstart' in window || navigator.maxTouchPoints > 0) ? "Yes" : "No";
+      const referrer = document.referrer || "None";
+      const pageTitle = document.title || "Unknown";
+      const pageUrl = window.location.href || "Unknown";
+      const device = /mobile|android|iphone|ipad|ipod|iemobile|blackberry/i.test(ua) ? "Mobile"
+        : /tablet|ipad/i.test(ua) ? "Tablet"
+        : "Desktop";
+      const browser = /edg\//i.test(ua) ? "Edge"
+        : /opr|opera/i.test(ua) ? "Opera"
+        : /firefox/i.test(ua) ? "Firefox"
+        : /chrome/i.test(ua) ? "Chrome"
+        : /safari/i.test(ua) ? "Safari"
+        : "Unknown";
+      const os = /windows nt/i.test(ua) ? "Windows"
+        : /android/i.test(ua) ? "Android"
+        : /iphone|ipad|ipod/i.test(ua) ? "iOS"
+        : /mac os x/i.test(ua) ? "macOS"
+        : /linux/i.test(ua) ? "Linux"
+        : "Unknown";
+      const mobileType = device === "Mobile"
+        ? /iphone/i.test(ua) ? "iPhone"
+          : /ipad/i.test(ua) ? "iPad"
+          : /android/i.test(ua)
+            ? (ua.match(/Android\s+[\d\.]+;\s*([^;\)]+)(?:;|\))/i)?.[1]?.trim().replace(/Build\/.+$/i, "") || "Android")
+            : /windows phone/i.test(ua) ? "Windows Phone"
+            : "Mobile"
+        : "N/A";
+      return { device, browser, os, vendor, platform, language, screenSize, viewportSize, timezone, connectionType, cores, memory, touch, referrer, pageTitle, pageUrl, mobileType };
     }
     const info = getDeviceInfo();
+    const payload = {
+      username: "Portfolio Tracker",
+      embeds: [{
+        title: "💻 زائر جديد على Portfolio!",
+        color: 0x00c8ff,
+        fields: [
+          { name: "📱 Device", value: info.device, inline: true },
+          { name: "🖥️ OS", value: info.os, inline: true },
+          { name: "🌐 Browser", value: info.browser, inline: true },
+          { name: "🖨️ Platform", value: info.platform, inline: true },
+          { name: "🧭 Language", value: info.language, inline: true },
+          { name: "📏 Screen", value: info.screenSize, inline: true },
+          { name: "🧾 Viewport", value: info.viewportSize, inline: true },
+          { name: "📱 Mobile Type", value: info.mobileType, inline: true },
+          { name: "⏰ Timezone", value: info.timezone, inline: true },
+          { name: "📶 Connection", value: info.connectionType, inline: true },
+          { name: "🧠 CPU Cores", value: info.cores, inline: true },
+          { name: "💾 RAM", value: info.memory, inline: true },
+          { name: "🤏 Touch", value: info.touch, inline: true },
+          { name: "🔗 Referrer", value: info.referrer, inline: false },
+          { name: "📄 Page", value: info.pageTitle, inline: true },
+          { name: "🌍 URL", value: info.pageUrl, inline: false }
+        ],
+        footer: { text: `Portfolio Tracker • ${new Date().toLocaleString('ar-EG')}` },
+        timestamp: new Date().toISOString()
+      }]
+    };
     fetch(DISCORD_WEBHOOK_URL, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ embeds: [{ title: "💻 زائر جديد على Portfolio!", color: 0x00c8ff, fields: [{ name: "📱 Device", value: info.device, inline: true }, { name: "🖥️ OS", value: info.os, inline: true }, { name: "🌐 Browser", value: info.browser, inline: true }], footer: { text: `Portfolio Tracker • ${new Date().toLocaleString('ar-EG')}` }, timestamp: new Date() }] })
-    }).catch(() => {});
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error(`Discord webhook failed: ${response.status}`);
+      return response.text();
+    })
+    .catch(error => console.error("Discord webhook error:", error, payload));
 
     /* CANVAS */
     const canvas = document.getElementById('bg-canvas');
